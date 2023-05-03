@@ -92,4 +92,4 @@ Weights for our pretrained classification model can be found at [pretrained_cls.
 
 ## Acknowledgements
 
-Our codebase is built on top of [NSCL](https://github.com/vacancy/NSCL-PyTorch-Release) and [ReferIt3D](https://github.com/referit3d/referit3d).
+Our codebase is built on top of [NSCL](https://github.com/vacancy/NSCL-PyTorch-Release), [NS3D](https://github.com/joyhsu0504/NS3D.git), and [ReferIt3D](https://github.com/referit3d/referit3d).
