@@ -1,17 +1,5 @@
-# NS3D: Neuro-Symbolic Grounding of 3D Objects and Relations
+# 10708 S23 Course Project
 
-
-![figure](figure.png)
-<br />
-<br />
-**NS3D: Neuro-Symbolic Grounding of 3D Objects and Relations**
-<br />
-[Joy Hsu](http://web.stanford.edu/~joycj/),
-[Jiayuan Mao](http://jiayuanm.com/),
-[Jiajun Wu](https://jiajunwu.com/)
-<br />
-In Conference on Computer Vision and Pattern Recognition (CVPR) 2023
-<br />
 
 ## Dataset
 Our dataset download process follows the [ReferIt3D benchmark](https://github.com/referit3d/referit3d).
@@ -52,32 +40,50 @@ Compile CUDA layers for [PointNet++](http://arxiv.org/abs/1706.02413).
 
 ## Evaluation
 
-To evaluate NS3D:
+To evaluate our models and baseline models:
 
 ```bash
 
   scannet=<path_to/keep_all_points_with_global_scan_alignment.pkl>
   referit=<path_to/sr3d_train.csv>
-  load_path=<path_to/model_to_evaluate.pth>
+  # baseline eva
+  load_path=<path_to/baseline.pth>
   
   jac-run ns3d/trainval.py --desc ns3d/desc_ns3d.py --scannet-file $scannet --referit3D-file $referit --load $load_path --evaluate
+
+  # Try1 eva
+  load_path=<path_to/try1.pth>
+  
+  jac-run ns3d/trainval.py --desc ns3d/desc_symgraph.py --scannet-file $scannet --referit3D-file $referit --load $load_path --mode 'o' --evaluate
+
+  # Try2 eva
+  load_path=<path_to/try2.pth>
+  
+  jac-run ns3d/trainval.py --desc ns3d/desc_ns3d.py --scannet-file $scannet --referit3D-file $referit --load $load_path --mode 'ol' --evaluate
 ```
 
-Weights for our trained NS3D model can be found at [trained_ns3d.pth](https://drive.google.com/drive/folders/1NKFcxqb9OnfqZBgSSTLBiChntSl7svbs?usp=sharing) and loaded into `load_path`.
+Weights for three models can be found at [trained.pth](https://drive.google.com/drive/folders/1NKFcxqb9OnfqZBgSSTLBiChntSl7svbs?usp=sharing) and loaded into `load_path`.
 
 
 
 ## Training
 
-To train NS3D:
+To train baseline, NS3D:
 
 ```bash
+  bash train.sh
+```
 
-  scannet=<path_to/keep_all_points_with_global_scan_alignment.pkl>
-  referit=<path_to/sr3d_train.csv>
-  load_path=<path_to/pretrained_classification_model.pth>
-  
-  jac-run ns3d/trainval.py --desc ns3d/desc_ns3d.py --scannet-file $scannet --referit3D-file $referit --load $load_path --lr 0.0001 --epochs 5000 --save-interval 1 --validation-interval 1
+To train Try1:
+
+```bash
+  bash train_ours.sh
+```
+
+To train Try2:
+
+```bash
+  bash train_ours_1.sh
 ```
 
 Weights for our pretrained classification model can be found at [pretrained_cls.pth](https://drive.google.com/drive/folders/1NKFcxqb9OnfqZBgSSTLBiChntSl7svbs?usp=sharing) and loaded into `load_path`.
@@ -86,4 +92,4 @@ Weights for our pretrained classification model can be found at [pretrained_cls.
 
 ## Acknowledgements
 
-Our codebase is built on top of [NSCL](https://github.com/vacancy/NSCL-PyTorch-Release) and [ReferIt3D](https://github.com/referit3d/referit3d). Please feel free to email me at joycj@stanford.edu if any problems arise.
+Our codebase is built on top of [NSCL](https://github.com/vacancy/NSCL-PyTorch-Release) and [ReferIt3D](https://github.com/referit3d/referit3d).
