@@ -62,7 +62,7 @@ To evaluate our models and baseline models:
   jac-run ns3d/trainval.py --desc ns3d/desc_ns3d.py --scannet-file $scannet --referit3D-file $referit --load $load_path --mode 'ol' --evaluate
 ```
 
-Weights for three models can be found at [trained.pth](https://drive.google.com/drive/folders/1NKFcxqb9OnfqZBgSSTLBiChntSl7svbs?usp=sharing) and loaded into `load_path`.
+Weights for three models can be found at [trained.pth](https://drive.google.com/file/d/1pVgrXMpNRymhrp_xEZoGfVbXnW9Hcu7L/view?usp=sharing) and loaded into `load_path`.
 
 
 
